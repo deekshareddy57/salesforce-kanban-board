@@ -1,0 +1,66 @@
+.card {
+    background: white;
+    border: 1px solid #c9c7c5;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    cursor: grab;
+}
+
+.accent-red    { border-left: 5px solid #ff5d2d; } /* Hot / Critical */
+.accent-orange { border-left: 5px solid #ff9a3c; } /* Warm */
+.accent-blue   { border-left: 5px solid #0070d2; } /* Cold / Standard */
+.accent-green  { border-left: 5px solid #04844b; } /* Big Money ($$$) */
+.accent-purple { border-left: 5px solid #9050e9; } /* Opportunity */
+.accent-grey   { border-left: 5px solid #706e6b; } /* Low Priority */
+
+.card:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.field-row {
+    font-size: 12px;
+    color: #3e3e3c;
+    margin-top: 2px;
+}
+
+.record-link {
+    color: #006dcc;
+    text-decoration: none;
+    font-size: 13px;
+    /* Ensure long names don't break the layout */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%; /* Leave space for the menu button */
+    display: inline-block;
+}
+
+.record-link:hover {
+    text-decoration: underline;
+    color: #005fb2;
+}
+
+.record-link {
+    color: #006dcc;
+    text-decoration: none;
+    font-size: 13px;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    display: inline-block;
+}
+
+.record-link:hover {
+    text-decoration: underline;
+    color: #005fb2;
+}

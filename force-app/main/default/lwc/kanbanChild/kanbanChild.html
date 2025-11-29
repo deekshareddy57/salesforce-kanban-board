@@ -1,0 +1,17 @@
+<template>
+    <div class="drop-zone" 
+         ondragover={handleDragOver} 
+         ondrop={handleDrop} 
+         ondragstart={handleNativeDragStart}> 
+
+        <template for:each={records} for:item="rec">
+            <c-card
+                key={rec.Id}
+                data-id={rec.Id}
+                record={rec}
+                metadata-name={metadataName}
+                display-fields={displayFields}>
+                </c-card>
+        </template>
+    </div>
+</template>

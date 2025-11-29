@@ -1,0 +1,69 @@
+<template>
+    <div class="main-container">
+        
+        <div class="header-controls">
+            <div class="header-left">
+                <h1 class="slds-text-heading_medium slds-m-right_medium">Unified Command Board</h1>
+                
+                <lightning-button-group>
+                    <lightning-button label="Leads" value="Lead_Kanban" variant={leadVariant} onclick={handleObjectSwitch}></lightning-button>
+                    <lightning-button label="Opportunities" value="Opportunity_Kanban" variant={oppVariant} onclick={handleObjectSwitch}></lightning-button>
+                    <lightning-button label="Cases" value="Case_Kanban" variant={caseVariant} onclick={handleObjectSwitch}></lightning-button>
+                </lightning-button-group>
+            </div>
+
+            <div class="header-right">
+                <lightning-button 
+                    label="New" 
+                    icon-name="utility:add" 
+                    onclick={handleNewRecord}
+                    variant="neutral">
+                </lightning-button>
+            </div>
+        </div>
+
+        <div class="metrics-container slds-p-horizontal_medium slds-p-bottom_small">
+            <div class="slds-grid slds-gutters">
+                <template for:each={summaryMetrics} for:item="metric">
+                    <div key={metric.label} class="slds-col slds-grow-none">
+                        <div class="metric-box">
+                            <lightning-icon icon-name={metric.icon} size="small" class="slds-m-right_small"></lightning-icon>
+                            <div>
+                                <p class="metric-label">{metric.label}</p>
+                                <h2 class={metric.className}>{metric.value}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="board-background">
+            <template if:true={kanbanBoardData}>
+                <template for:each={kanbanBoardData} for:item="column">
+                    <div key={column.stageName} class="column-wrapper">
+                        <div class="heading">
+                            {column.stageName} ({column.records.length})
+                        </div>
+                        <div class="list">
+                            <c-kanban-child
+                                records={column.records}
+                                stage={column.stageName}
+                                group-by-field={groupByField}
+                                metadata-name={customMetadataApi}
+                                display-fields={displayFields}
+                                onlistitemdrop={handleDrop}
+                                onlistitemdrag={handleDragStart}> </c-kanban-child>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            
+            <template if:false={kanbanBoardData}>
+                <div class="loading-state">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

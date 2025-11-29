@@ -1,0 +1,23 @@
+<template>
+    <div class={cardClass} draggable="true" ondragstart={handleDragStart}>
+        <div class="card-header">
+            
+            <a href="#" onclick={navigateToRecord} class="record-link">
+                <strong>{record.Name}</strong>
+            </a>
+            
+            <lightning-button-menu alternative-text="Actions" variant="border-filled" icon-size="x-small" menu-alignment="right">
+                <lightning-menu-item value="Edit" label="Edit" onclick={handleEdit}></lightning-menu-item>
+                <lightning-menu-item value="Delete" label="Delete" onclick={handleDelete}></lightning-menu-item>
+            </lightning-button-menu>
+        </div>
+
+        <div class="card-body">
+            <template for:each={processedFields} for:item="f">
+                <div key={f.key} class="field-row">
+                   <span class="value">{f.value}</span>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

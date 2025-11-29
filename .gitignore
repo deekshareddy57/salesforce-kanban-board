@@ -1,0 +1,6 @@
+.sfdx/
+.vscode/
+node_modules/
+*.log
+*.tmp
+/.env
